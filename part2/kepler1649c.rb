@@ -1,6 +1,6 @@
 # They Came From Space
-# Part 1
-# Organisms & Spaceship
+# Part 2
+# Kepler-1649c
 # Raphael Adams
 
 class Organism
@@ -81,6 +81,23 @@ class Spaceship
   end
 end
 
+class Planet
+  attr_accessor :num_moons
+  attr_accessor :dist_from_sun
+  attr_accessor :surface_content
+  attr_accessor :inhabitants
+
+  def accept_orgs(orgs_to_accept)
+    @inhabitants = Hash.new
+    orgs_to_accept.each { |org| @inhabitants[org] = 2 }
+  end
+
+  def million_years_later
+    puts "ONE MILLION YEARS LATER:"
+    @inhabitants.each { |org, num| @inhabitants[org] = [true, false].sample ? rand(1000000) : 0 }
+    @inhabitants.each { |org, num| puts num == 0? "#{ org.species_name } didn't survive." : "#{ org.species_name }: Population #{ num }"}
+  end
+end
 
 
 prospect1 = Martian.new
@@ -110,3 +127,12 @@ millenium_falcon.gas = 50
 
 millenium_falcon.load_orgs(prospect1, prospect2, prospect3, prospect4, prospect5)
 millenium_falcon.blast_off
+
+
+kepler1649c = Planet.new
+kepler1649c.num_moons = 100
+kepler1649c.dist_from_sun = 1000000
+kepler1649c.surface_content = "Obsidian"
+
+kepler1649c.accept_orgs(millenium_falcon.all_organisms.each)
+kepler1649c.million_years_later
