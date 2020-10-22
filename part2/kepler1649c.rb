@@ -131,5 +131,5 @@ kepler1649c.num_moons = 100
 kepler1649c.dist_from_sun = 1000000
 kepler1649c.surface_content = "Obsidian"
 
-kepler1649c.accept_orgs(millenium_falcon.all_organisms.each)
+kepler1649c.accept_orgs(millenium_falcon.all_organisms)
 kepler1649c.million_years_later
