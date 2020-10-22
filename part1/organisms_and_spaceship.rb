@@ -105,8 +105,5 @@ prospect5.fav_food = "Chicken"
 
 
 millenium_falcon = Spaceship.new
-millenium_falcon.power = 10
-millenium_falcon.gas = 50
-
 millenium_falcon.load_orgs(prospect1, prospect2, prospect3, prospect4, prospect5)
 millenium_falcon.blast_off
