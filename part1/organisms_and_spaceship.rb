@@ -52,12 +52,30 @@ class Spaceship
   def load_organisms(*orgs_to_load)
     @all_organisms = []
     orgs_to_load.each { |org| @all_organisms << org }
-    #@all_organisms.each { |org| puts org }
   end
 
-  def blast_off()
-    puts "Gas in litres: #{ @gas }"
-    puts "We've reached Kepler-1649c!"
+  def blast_off
+    required_gas = 10
+    required_power = 10
+
+    print "How many tanks of gas do you want to load? "
+    @gas = gets.chomp.to_i
+    print "What power level is this ship from 1-20? "
+    @power = gets.chomp.to_i
+
+    if @gas < required_gas
+      puts "Not enough gas to get to Kepler-1649c, we need #{ required_gas } tanks"
+    elsif @power < required_power
+      puts "Not enough power to get to Kepler-1649c, we need level #{ required_power }"
+    else
+      print "Gas level: "
+      required_gas.times do
+          print "#{ @gas } ... "
+          @gas -= 1
+      end
+      puts "\nWe've reached Kepler-1649c!"
+      puts "We have #{ @gas } tanks of gas left."
+    end
   end
 end
 
@@ -65,32 +83,22 @@ end
 prospect1 = Martian.new
 prospect1.name = "Marvin"
 prospect1.fav_food = "Chips"
-# prospect1.print_info
-# prospect1.move
 
 prospect2 = Extraterrestrial.new
 prospect2.name = "ET"
 prospect2.fav_food = "Reeses pieces"
-# prospect2.print_info
-# prospect2.move
 
 prospect3 = LittleGreenMan.new
 prospect3.name = "Wally"
 prospect3.fav_food = "Bugs"
-# prospect3.print_info
-# prospect3.move
 
 prospect4 = Alien.new
 prospect4.name = "Darlene"
 prospect4.fav_food = "Chocolate"
-# prospect4.print_info
-# prospect4.move
 
 prospect5 = Spaceman.new
 prospect5.name = "Chris"
 prospect5.fav_food = "Chicken"
-# prospect5.print_info
-# prospect5.move
 
 millenium_falcon = Spaceship.new
 millenium_falcon.power = 10
