@@ -1,21 +1,9 @@
-class Truck
-  attr_accessor :odometer
-  attr_accessor :gas_used
-  
-  def mileage
-    @odometer / @gas_used
+class Truck < Vehicle
+  attr_accessor :cargo
+
+  def load_bed(contents)
+    puts "Securing #{ contents } in truck bed"
+    @cargo = contents
   end
   
-  def accelerate
-    puts "Floor it!"
-  end
-  
-  def sound_horn
-    puts "Beep beep!"
-  end
-  
-  def steer
-    puts "Turn front 2 wheels"
-  end
-    
 end
