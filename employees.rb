@@ -73,6 +73,11 @@ class HourlyEmployee < Employee
       @hours_per_week = hours_per_week
     end
 
+    def turn_into_cashier
+      self.hourly_wage = 12.75
+      self.hours_per_week = 25
+    end
+
     def print_pay_stub
       print_name
       pay_for_period = hourly_wage * hours_per_week * 2
@@ -88,3 +93,18 @@ salaried_employee.print_pay_stub
 
 hourly_employee = HourlyEmployee.new("John Smith", 14.97, 30)
 hourly_employee.print_pay_stub
+
+
+jim = HourlyEmployee.new("Jim Halpert")
+jim.turn_into_cashier
+jim.print_pay_stub
+
+dwight = HourlyEmployee.new("Dwight Schrute", 12.75, 25)
+pam = HourlyEmployee.new("Pam Beesly", 12.75, 25)
+ryan = HourlyEmployee.new("Ryan Howard", 12.75, 25)
+
+stanley = HourlyEmployee.new("Stanley Hudson", 10.50, 20)
+kevin = HourlyEmployee.new("Kevin Malone", 10.50, 20)
+
+angela = HourlyEmployee.new("Angela Martin", 19.25, 30)
+oscar = HourlyEmployee.new("Oscar Martinez", 19.25, 30)
