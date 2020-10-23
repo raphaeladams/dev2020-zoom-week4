@@ -5,6 +5,10 @@ class Employee
 
   attr_reader :name
 
+  def initialize(name = "Anonymous")
+    self.name = name
+  end
+
   def name=(name)
     if name == ""
       raise "Name can't be blank"
@@ -24,7 +28,7 @@ class SalariedEmployee < Employee
     attr_reader :salary
 
     def initialize(name = "Anonymous", salary = 0.0)
-      self.name = name
+      super(name)
       self.salary = salary
     end
 
@@ -38,7 +42,7 @@ class SalariedEmployee < Employee
     def print_pay_stub
       print_name
       pay_for_period = (salary / 365.0) * 14
-      formatted_pay = format("%.2f", pay_for_period)
+      formatted_pay = format("$%.2f", pay_for_period)
       puts "Pay this period: #{ formatted_pay }"
     end
 
@@ -50,7 +54,7 @@ class HourlyEmployee < Employee
     attr_reader :hourly_wage, :hours_per_week
 
     def initialize(name = "Anonymous", hourly_wage = 0.0, hours_per_week = 0.0)
-      self.name = name
+      super(name)
       self.hourly_wage = hourly_wage
       self.hours_per_week = hours_per_week
     end
@@ -72,7 +76,7 @@ class HourlyEmployee < Employee
     def print_pay_stub
       print_name
       pay_for_period = hourly_wage * hours_per_week * 2
-      formatted_pay = format("%.2f", pay_for_period)
+      formatted_pay = format("$%.2f", pay_for_period)
       puts "Pay this period: #{ formatted_pay }"
     end
 
